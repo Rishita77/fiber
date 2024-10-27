@@ -154,6 +154,11 @@ func (r *Redirect) WithInput() *Redirect {
 		_ = r.c.Bind().Query(oldInput) //nolint:errcheck // not needed
 	}
 
+
+	if err != nil {
+		return r
+	}
+
 	// Add old input data
 	for k, v := range oldInput {
 		r.messages = append(r.messages, redirectionMsg{
